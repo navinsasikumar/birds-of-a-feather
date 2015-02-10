@@ -68,7 +68,7 @@ module.exports = {
     'use strict';
     var userid = req.params.userid;
 
-    User.findById(userid)
+    User.findOneById(userid)
       .populate('posts')
       .exec(function(err, user) {
         if (err) {
