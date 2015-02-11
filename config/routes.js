@@ -69,31 +69,43 @@ module.exports.routes = {
     action: 'destroy'
   },
 
-  'get /users/:userid/posts': {
-    controller: 'UserController',
-    action: 'findPosts'
-  },
 
   /** Posts */
-  'post /posts': {
+  'post /users/:userid/posts': {
     controller: 'PostController',
     action: 'create'
   },
   'get /posts': {
     controller: 'PostController',
-    action: 'listAll'
+    action: 'list'
   },
-  'get /posts/:id': {
+  'get /posts/:id': { //TODO restrict
     controller: 'PostController',
     action: 'find'
   },
-  'put /posts/:id': {
-    controller: 'UserController',
+  'put /users/:userid/posts/:postId': {
+    controller: 'PostController',
     action: 'update'
   },
-  'delete /posts/:id': {
+  'delete /users/:userid/posts/:postId': {
     controller: 'PostController',
     action: 'destroy'
+  },
+  'get /users/:userid/posts': {
+    controller: 'UserController',
+    action: 'findPosts'
+  },
+  'get /users/:userid/posts/:postid': {
+    controller: 'PostController',
+    action: 'findOnePost'
+  },
+  'put /users/:userid/posts/:postid/votes/up': {
+    controller: 'PostController',
+    action: 'upVote'
+  },
+  'put /users/:userid/posts/:postid/votes/down': {
+    controller: 'PostController',
+    action: 'downVote'
   }
 
 };

@@ -18,6 +18,19 @@ module.exports = {
     },
     user: {
       model: 'user'
+    },
+    votes: {
+      type: 'Integer',
+      defaultsTo: 0
+    },
+    tags: {
+      type: 'Array'
+    },
+    location: {
+      type: 'String'
+    },
+    timeTaken: {
+      type: 'Datetime'
     }
 
   }
