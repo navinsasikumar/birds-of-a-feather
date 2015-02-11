@@ -201,6 +201,7 @@ module.exports = {
 
     Post.findOneById(postid)
       .populate('user')
+      .populate('comments')
       .exec(function(err, post) {
         if (err) {
           return res.json(err);

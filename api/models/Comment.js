@@ -1,5 +1,5 @@
 /**
-* Post.js
+* Comment.js
 *
 * @description :: TODO: You might write a short summary of how this model works
 * and what it represents here.
@@ -7,34 +7,23 @@
 */
 
 module.exports = {
+
   attributes: {
     content: {
       type: 'String'
     },
-    postType: {
-      type: 'String',
-      enum: ['regular', 'id', 'alert', 'photo'],
-      defaultsTo: 'regular'
+    post: {
+      model: 'post',
+      required: true
     },
     user: {
-      model: 'user'
+      model: 'user',
+      required: true
     },
     votes: {
       type: 'Integer',
       defaultsTo: 0
-    },
-    tags: {
-      type: 'Array'
-    },
-    location: {
-      type: 'String'
-    },
-    timeTaken: {
-      type: 'Datetime'
-    },
-    comments: {
-      collection: 'comment',
-      via: 'post'
     }
   }
 };
+

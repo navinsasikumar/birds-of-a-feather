@@ -25,8 +25,11 @@ module.exports = {
     posts: {
       collection: 'post',
       via: 'user'
+    },
+    comments: {
+      collection: 'comment',
+      via: 'user'
     }
-
   }
 };
 

@@ -106,6 +106,11 @@ module.exports.routes = {
   'put /users/:userid/posts/:postid/votes/down': {
     controller: 'PostController',
     action: 'downVote'
-  }
+  },
 
+  /** Comments */
+  'post /users/:userid/posts/:postid/comments': {
+    controller: 'CommentController',
+    action: 'create'
+  },
 };
