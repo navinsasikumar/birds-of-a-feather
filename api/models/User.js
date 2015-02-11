@@ -19,7 +19,8 @@ module.exports = {
       unique: true
     },
     encryptedPassword: {
-      type: 'String'
+      type: 'String',
+      required: true
     },
     posts: {
       collection: 'post',
