@@ -17,9 +17,9 @@ birds.controller('PostController', ['$scope', '$routeParams', 'Post',
       }
     ];
 
-    /*$scope.userData = User.get({});
+    $scope.posts = Post.get({});
 
-    $scope.changePassword = function() {
+    /*$scope.changePassword = function() {
       $scope.userData.email = 'test';
     };*/
 }]);
