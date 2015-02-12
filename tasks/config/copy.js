@@ -28,7 +28,8 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: './bower_components',
                 src: [
-                    'angular/angular.js', 'angular-route/angular-route.js','angular-mocks/angular-mocks.js', 'angular-loader/angular-loader.js',
+                    'angular/angular.js', 'angular-route/angular-route.js','angular-mocks/angular-mocks.js',
+                    'angular-loader/angular-loader.js', 'angular-resource/angular-resource.js',
                     'bootstrap/dist/js/bootstrap.js','jquery/dist/jquery.js'
                 ],
                 flatten: true,

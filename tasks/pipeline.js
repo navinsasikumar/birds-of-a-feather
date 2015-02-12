@@ -31,14 +31,15 @@ var jsFilesToInject = [
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/angular.js',
   'js/dependencies/angular-route.js',
+  'js/dependencies/angular-resource.js',
   'js/dependencies/jquery.js',
   'js/dependencies/**/*.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'js/app.js',
+  'app.js',
   'js/services.js',
-  'js/controllers.js',
+  'js/controllers/*.js',
   'js/filters.js',
   'js/directives.js',
   'js/**/*.js'
