@@ -147,7 +147,7 @@ module.exports = {
   list: function(req, res) {
     'use strict';
 
-    var count = req.query.count || 25;
+    req.query.count = req.query.count || 25;
     var sinceId = req.query.sinceId || '';
     var maxId = req.query.maxId || '';
 
@@ -157,8 +157,11 @@ module.exports = {
       {
         where: where,
         sort: 'createdAt DESC',
-        limit: count
-      },
+        limit: req.query.count
+      })
+    .populate('user')
+    .populate('comments')
+    .exec(
       function(err, posts) {
         res.json({
           posts: posts,
