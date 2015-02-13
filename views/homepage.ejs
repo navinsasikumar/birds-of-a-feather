@@ -21,39 +21,25 @@
     <div class="container-fluid">
       <div class="row" style="padding: 10px 10px 10px 0" ng-repeat="post in posts.posts">
         <div class="row">
-          <div class="col-lg-1">
-            <div><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></div>
-            <div>{{post.votes}}</div>
-            <div><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
+          <div class="col-lg-050">
+            <div class="text-center"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></div>
+            <div class="text-center">{{post.votes}}</div>
+            <div class="text-center"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></div>
           </div>
           <div class="col-lg-11">
-            <div class="col-lg-12">{{post.user.name}}</div>
-            <div class="col-lg-12">{{post.content}}</div>
-            <div class="col-lg-offset-1" ng-repeat="comment in post.comments">
-              {{comment.content}}
+            <div><b><a>{{post.user.name}}</a></b></div>
+            <div><small><a>{{post.createdAt}}</a></small></div>
+            <div>{{post.content}}</div>
+            <div class="col-lg-offset-025" ng-repeat="comment in post.comments">
+              <div class="col-lg-12">
+                <a>{{comment.user}}</a>
+                {{comment.content}}
+              </div>
             </div>
           </div>
+          <div class="col-lg-050"></div>
         </div>
-        <hr>
+        <hr class="hr-thin">
       </div>
     </div>
-    <hr>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Content</th>
-                <th>Votes</th>
-                <th>Tags</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="" ng-repeat="post in posts.posts">
-                <td>{{post.user.name}}</td>
-                <td>{{post.content}}</td>
-                <td>{{post.votes}}</td>
-                <td>{{post.tags}}</td>
-            </tr>
-        </tbody>
-    </table>
 </div>

@@ -1,0 +1,43 @@
+.btn {
+  border-radius: 0px;
+}
+
+.col-lg-025 {
+  width: 2.083333%;
+  padding-left: 15px;
+  padding-right: 0;
+  float: left;
+}
+
+.col-lg-050 {
+  width: 4.166666%;
+  padding-left: 15px;
+  padding-right: 0;
+  float: left;
+}
+
+.col-lg-075 {
+  width: 6.25%;
+  padding-left: 15px;
+  padding-right: 0;
+  float: left;
+}
+
+.col-lg-offset-025 {
+  margin-left: 2.083333%;
+}
+
+.col-lg-offset-050 {
+  margin-left: 4.166666%
+}
+
+.col-lg-offset-075 {
+  margin-left: 6.25%;
+}
+
+.hr-thin {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+
