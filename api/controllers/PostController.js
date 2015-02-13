@@ -161,12 +161,32 @@ module.exports = {
       })
     .populate('user')
     .populate('comments')
-    .exec(
-      function(err, posts) {
-        res.json({
-          posts: posts,
-          searchMetadata: getSearchMetadata(posts, req.query)
-        });
+    .then(function(posts) {
+      //_.forEach(posts, function(n) { console.log(n);} )
+      var commentUsers = User.find({
+        id: _.pluck(_(posts).forEach(function(post) { console.log(post.comments); }), 'user')
+      })
+      .then(function(commentUsers) {
+        console.log(commentUsers);
+        return commentUsers;
+      });
+      return [posts, commentUsers];
+    })
+    .spread(function(posts, commentUsers) {
+      var commentUsers = _.indexBy(commentUsers, 'id');
+      posts.comments = _.map(posts.comments, function(comment) {
+        comment.user = commentUsers[comment.user].name;
+        return comment;
+      });
+      res.json({
+        posts: posts,
+        searchMetadata: getSearchMetadata(posts, req.query)
+      });
+    })
+    .catch(function(err) {
+      if (err) {
+        return res.serverError(err);
+      }
     });
   },
 
@@ -205,13 +225,27 @@ module.exports = {
     Post.findOneById(postid)
       .populate('user')
       .populate('comments')
-      .exec(function(err, post) {
-        if (err) {
-          return res.json(err);
-        } else if (typeof post !== 'undefined' && post.user.id !== userid) {
-            return res.json({notice: 'Invalid post'});
-        }
-        return res.json(post);
+      .then(function(post) {
+          var commentUsers = User.find({
+              id: _.pluck(post.comments, 'user')
+            })
+            .then(function(commentUsers) {
+              return commentUsers;
+            });
+          return [post, commentUsers];
+        })
+        .spread(function(post, commentUsers) {
+          var commentUsers = _.indexBy(commentUsers, 'id');
+          post.comments = _.map(post.comments, function(comment) {
+            comment.user = commentUsers[comment.user].name;
+            return comment;
+          });
+          res.json(post);
+        })
+        .catch(function(err) {
+          if (err) {
+            return res.serverError(err);
+          }
     });
   },
 
