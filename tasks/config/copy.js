@@ -40,10 +40,19 @@ module.exports = function(grunt) {
                 cwd: './bower_components',
                 src: [
                 'bootstrap/dist/css/bootstrap.css',
-                'bootstrap/dist/css/bootstrap-theme.css'
+                'bootstrap/dist/css/bootstrap-theme.css',
                 ],
                 flatten: true,
                 dest: '.tmp/public/styles'
+              },
+              { // add bootstrap fonts
+                expand: true,
+                cwd: './bower_components',
+                src: [
+                'bootstrap/dist/fonts/*'
+                ],
+                flatten: true,
+                dest: '.tmp/public/fonts'
               }
             ]
 		},
