@@ -162,21 +162,26 @@ module.exports = {
     .populate('user')
     .populate('comments')
     .then(function(posts) {
-      //_.forEach(posts, function(n) { console.log(n);} )
+      var commentUsersList = _.map(posts, function(post) {
+        return _.pluck(post.comments, 'user');
+      });
+      commentUsersList = _.flatten(commentUsersList, true);
       var commentUsers = User.find({
-        id: _.pluck(_(posts).forEach(function(post) { console.log(post.comments); }), 'user')
+        id: commentUsersList
       })
       .then(function(commentUsers) {
-        console.log(commentUsers);
         return commentUsers;
       });
       return [posts, commentUsers];
     })
     .spread(function(posts, commentUsers) {
-      var commentUsers = _.indexBy(commentUsers, 'id');
-      posts.comments = _.map(posts.comments, function(comment) {
-        comment.user = commentUsers[comment.user].name;
-        return comment;
+      commentUsers = _.indexBy(commentUsers, 'id');
+      posts = _.map(posts, function(post) {
+        post.comments = _.map(post.comments, function(comment) {
+          comment.user = {name: commentUsers[comment.user].name, id: comment.user};
+          return comment;
+        });
+        return post;
       });
       res.json({
         posts: posts,
@@ -235,7 +240,7 @@ module.exports = {
           return [post, commentUsers];
         })
         .spread(function(post, commentUsers) {
-          var commentUsers = _.indexBy(commentUsers, 'id');
+          commentUsers = _.indexBy(commentUsers, 'id');
           post.comments = _.map(post.comments, function(comment) {
             comment.user = commentUsers[comment.user].name;
             return comment;
