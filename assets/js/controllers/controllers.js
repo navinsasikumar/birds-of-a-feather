@@ -24,6 +24,16 @@ birds.controller('PostController', ['$scope', '$routeParams', 'Posts', 'Post',
       });
     };
 
+    $scope.comment = function(post, index) {
+      var userid = post.user.id;
+      var postid = post.id;
+      //var content = $scope.commentForm.commentContent;
+      console.log($scope.commentForm);
+      Post.comment({userid: userid, postid: postid, content: content}, function (response) {
+        $scope.posts.post[index].comments = response.comments;
+      });
+    }
+
 
     /*$scope.changePassword = function() {
       $scope.userData.email = 'test';

@@ -40,6 +40,15 @@
                 {{comment.content}}
               </div>
             </div>
+            <form name="commentForm" class="form-horizontal" ng-submit="comment(post, $index)">
+              <div class="form-group col-lg-9">
+                <textarea class="form-control input-block-level" rows=1  placeholder="Comment"
+                ng-model="commentForm.commentContent"></textarea>
+              </div>
+              <div class="col-lg-3">
+                <button type="submit" class="btn btn-primary btn-sm">Comment</button>
+              </div>
+            </form>
           </div>
           <div class="col-lg-050"></div>
         </div>

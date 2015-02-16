@@ -20,6 +20,11 @@ birds.factory('Post', ['$resource',
         downVote: {
           method: 'PUT',
           url: '/users/:userid/posts/:postid/votes/down'
+        },
+        comment: {
+          method: 'POST',
+          url: '/users/:userid/posts/:postid/comments',
+          params: {user: 1, conent: "This is a test comment"}
         }
 
       });
