@@ -7,6 +7,7 @@ var birds = angular.module('birds.controllers', ['ngRoute']);
 birds.controller('PostController', ['$scope', '$routeParams', 'Posts', 'Post',
   function($scope, $routeParams, Posts, Post) {
     $scope.posts = Posts.get({});
+    $scope.newComment = "";
 
     $scope.upVote = function(post, index) {
       var userid = post.user.id;
@@ -24,15 +25,16 @@ birds.controller('PostController', ['$scope', '$routeParams', 'Posts', 'Post',
       });
     };
 
-    $scope.comment = function(post, index) {
+    $scope.comment = function(post, newComment, index) {
       var userid = post.user.id;
       var postid = post.id;
-      //var content = $scope.commentForm.commentContent;
-      console.log($scope.commentForm);
-      Post.comment({userid: userid, postid: postid, content: content}, function (response) {
-        $scope.posts.post[index].comments = response.comments;
+      var content = newComment;
+      console.log($scope.newComment);
+      Post.comment({userid: userid, user: userid, postid: postid, content: content}, function (response) {
+        //$scope.posts.posts[index].comments = content;
+        console.log(response);
       });
-    }
+    };
 
 
     /*$scope.changePassword = function() {

@@ -10,6 +10,7 @@ module.exports = {
     'use strict';
     var params = req.body;
     params.post = parseInt(req.params.postid);
+    console.log(params);
 
     Comment.create(params).exec(function createCB(err, comment) {
       if (err) {
