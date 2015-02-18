@@ -14,11 +14,20 @@ birds.controller('PostController', ['$scope', '$routeParams', 'Posts', 'Post', '
       var userid = 1;
       var content = $scope.newPostContent;
       var type = $scope.newPostType;
+      var location = $scope.newPostLocation;
+      var timeTaken = $scope.newPostDate;
+      var tags = $scope.newPostTags;
 
-      UserPosts.post({userid: userid, user: userid, content: content, postType: type}, function(response) {
-        console.log(response);
-        $scope.posts.posts.unshift(response.post);
-        $scope.newPostContent = '';
+      UserPosts.post(
+        {userid: userid, user: userid, content: content, postType: type, location: location, timeTaken: timeTaken, tags: tags},
+        function(response) {
+          console.log(response);
+          $scope.posts.posts.unshift(response.post);
+          $scope.newPostContent = '';
+          $scope.newPostType = $scope.postTypes[0];
+          $scope.newPostLocation = '';
+          $scope.newPostDate = '';
+          $scope.newPostTags = '';
       });
     };
 
