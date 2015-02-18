@@ -13,7 +13,7 @@ module.exports = {
     },
     postType: {
       type: 'String',
-      enum: ['regular', 'id', 'alert', 'photo'],
+      enum: ['Regular', 'ID Help', 'Alert', 'Photo'],
       defaultsTo: 'regular'
     },
     user: {

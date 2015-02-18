@@ -28,7 +28,13 @@
             </div>
           </div>
           <div class="col-lg-11">
-            <div><b><a href="/users/{{post.user.id}}">{{post.user.name}}</a></b></div>
+            <div>
+              <b><a href="/users/{{post.user.id}}">{{post.user.name}}</a></b>
+              <span>[{{post.postType}}]</span>
+              <span ng-show="post.location"> at {{post.location}}</span>
+              <span ng-show="post.timeTaken"> on {{post.timeTaken}}</span>
+              <span ng-show="post.tags"> Tagged: [{{post.tags}}]</span>
+            </div>
             <div><small><a>{{post.createdAt}}</a></small></div>
             <div>{{post.content}}</div>
             <div class="col-lg-offset-025" ng-repeat="comment in post.comments">
