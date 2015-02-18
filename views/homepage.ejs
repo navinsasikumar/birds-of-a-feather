@@ -19,7 +19,7 @@
     </form>
     <hr>
     <div class="container-fluid">
-      <div class="row" style="padding: 10px 10px 10px 0" ng-repeat="post in posts.posts">
+      <div class="row" style="padding: 10px 10px 10px 0" ng-repeat="post in posts.posts track by $index">
         <div class="row">
           <div class="col-lg-050">
             <div class="text-center">
@@ -40,9 +40,9 @@
                 {{comment.content}}
               </div>
             </div>
-            <form name="commentForm" class="form-horizontal" ng-submit="comment(post, newComment, $index)">
+            <form name="commentForm" class="form-horizontal" ng-submit="makeComment(post, $index)">
               <div class="form-group col-lg-9">
-                <textarea class="form-control input-block-level" rows=1 placeholder="Comment" ng-model="newComment"></textarea>
+                <textarea class="form-control input-block-level" rows=1 placeholder="Comment" ng-model="posts.posts[$index].newComment"></textarea>
               </div>
               <div class="col-lg-3">
                 <button type="submit" class="btn btn-primary btn-sm">Comment</button>

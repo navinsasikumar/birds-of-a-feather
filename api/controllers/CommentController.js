@@ -16,9 +16,14 @@ module.exports = {
       if (err) {
           return res.json(err);
       }
-      return res.json({
-        notice: 'Created comment with content: ' + comment.content
-      });
+      Comment.findOneById(comment.id)
+        .populate('user')
+        .exec(function(err, comment) {
+          if (err) {
+            return res.json(err);
+          }
+          return res.json({comment: comment});
+        });
     });
   },
 

@@ -6,8 +6,7 @@ var birds = angular.module('birds.controllers', ['ngRoute']);
 
 birds.controller('PostController', ['$scope', '$routeParams', 'Posts', 'Post',
   function($scope, $routeParams, Posts, Post) {
-    $scope.posts = Posts.get({});
-    $scope.newComment = "";
+    $scope.posts = Posts.get({}); //TODO Getting the scope like this and using index is probably broken
 
     $scope.upVote = function(post, index) {
       var userid = post.user.id;
@@ -25,14 +24,14 @@ birds.controller('PostController', ['$scope', '$routeParams', 'Posts', 'Post',
       });
     };
 
-    $scope.comment = function(post, newComment, index) {
+    $scope.makeComment = function(post, index) {
       var userid = post.user.id;
       var postid = post.id;
-      var content = newComment;
-      console.log($scope.newComment);
+      var content = $scope.posts.posts[index].newComment;
+      //console.log($scope.posts.posts[index].comments);
       Post.comment({userid: userid, user: userid, postid: postid, content: content}, function (response) {
-        //$scope.posts.posts[index].comments = content;
-        console.log(response);
+        $scope.posts.posts[index].comments.push(response.comment);
+        $scope.posts.posts[index].newComment = '';
       });
     };
 
@@ -41,4 +40,3 @@ birds.controller('PostController', ['$scope', '$routeParams', 'Posts', 'Post',
       $scope.userData.email = 'test';
     };*/
 }]);
-
