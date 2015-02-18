@@ -123,9 +123,14 @@ module.exports = {
       if (err) {
           return res.json(err);
       }
-      return res.json({
-        notice: 'Created post with content: ' + post.content
-      });
+      Post.findOneById(post.id)
+        .populate('user')
+        .exec(function(err, post) {
+          if (err) {
+            return res.json(err);
+          }
+          return res.json({post: post});
+        })
     });
   },
 

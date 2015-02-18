@@ -8,6 +8,20 @@ birds.factory('Posts', ['$resource',
   }
 ]);
 
+birds.factory('UserPosts', ['$resource',
+  function($resource) {
+    return $resource('/users/:userid/posts/',
+      {userid: '@userid'},
+      {
+        post: {
+          method: 'POST',
+          url: '/users/:userid/posts'
+        }
+      }
+    );
+  }
+]);
+
 birds.factory('Post', ['$resource',
   function($resource) {
     return $resource('users/:userid/posts/:postid/',
