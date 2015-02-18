@@ -16,7 +16,7 @@ birds.controller('PostController', ['$scope', '$routeParams', 'Posts', 'Post', '
       var type = $scope.newPostType;
 
       UserPosts.post({userid: userid, user: userid, content: content, type: type}, function(response) {
-        $scope.posts.posts.push(response.post);
+        $scope.posts.posts.unshift(response.post);
         $scope.newPostContent = '';
       });
     };
