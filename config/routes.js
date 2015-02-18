@@ -113,4 +113,18 @@ module.exports.routes = {
     controller: 'CommentController',
     action: 'create'
   },
+
+  /** Login */
+  'get /login': {
+    controller: 'AuthController',
+    action: 'login'
+  },
+  'post /login': {
+    controller: 'AuthController',
+    action: 'process'
+  },
+  'post /logout': {
+    controller: 'AuthController',
+    action: 'logout'
+  }
 };

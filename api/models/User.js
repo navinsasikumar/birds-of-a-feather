@@ -6,6 +6,8 @@
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
+var bcrypt = require('bcrypt');
+
 module.exports = {
 
   attributes: {
@@ -18,7 +20,7 @@ module.exports = {
       required: true,
       unique: true
     },
-    encryptedPassword: {
+    password: {
       type: 'String',
       required: true
     },
@@ -30,6 +32,18 @@ module.exports = {
       collection: 'comment',
       via: 'user'
     }
+  },
+  beforeCreate: function(user, callback) {
+    bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.hash(user.password, salt, function(err, hash) {
+        if (err) {
+          console.log(err);
+        } else {
+          user.password = hash;
+          callback(null, user);
+        }
+      });
+    });
   }
 };
 
