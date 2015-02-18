@@ -13,24 +13,31 @@ module.exports = {
   process: function (req, res) {
     passport.authenticate('local', function(err, user, info) {
       if (err || !user) {
-        return res.send({
+        /*return res.send({
           message: 'login failed'
-        });
-        res.send(err);
+        });*/
+        console.log('Login failed')
+        console.log(err);
+        return res.redirect('/login');
       }
       req.logIn(user, function(err) {
         if (err) {
           res.send(err);
         }
-        return res.send({
+        /*return res.send({
           message: 'login successful'
-        });
+        });*/
+        console.log('Login successful');
+        console.log(req.session.returnTo);
+        return res.redirect(req.session.returnTo || '/');
       });
     })(req, res);
   },
   logout: function (req, res) {
     req.logout();
     res.send('logout successful');
+    req.session.returnTo = '/';
+    res.redirect('/login');
   }
 };
 

@@ -48,4 +48,23 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+
+
+    '*': false,
+    '/': 'isLoggedIn',
+    home: 'isLoggedIn',
+    AuthController: {
+      '*': 'isLoggedIn',
+      login: 'isNotLoggedIn',
+      process: 'isNotLoggedIn'
+    },
+    UserController: {
+      '*': 'isLoggedIn'
+    },
+    PostController: {
+      '*': 'isLoggedIn'
+    },
+    CommentController: {
+      '*': 'isLoggedIn'
+    }
 };

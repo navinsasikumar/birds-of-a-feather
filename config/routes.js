@@ -123,7 +123,7 @@ module.exports.routes = {
     controller: 'AuthController',
     action: 'process'
   },
-  'post /logout': {
+  '/logout': {
     controller: 'AuthController',
     action: 'logout'
   }
