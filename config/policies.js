@@ -50,21 +50,24 @@ module.exports.policies = {
 	// }
 
 
-    '*': false,
-    '/': 'isLoggedIn',
-    home: 'isLoggedIn',
+    //'*': false,
+    //'/': 'isLoggedIn',
+    //home: 'isLoggedIn',
     AuthController: {
       '*': 'isLoggedIn',
       login: 'isNotLoggedIn',
       process: 'isNotLoggedIn'
     },
-    UserController: {
+    HomeController: {
       '*': 'isLoggedIn'
+    },
+    UserController: {
+      //'*': 'isLoggedIn'
     },
     PostController: {
-      '*': 'isLoggedIn'
+      //'*': 'isLoggedIn'
     },
     CommentController: {
-      '*': 'isLoggedIn'
+      //'*': 'isLoggedIn'
     }
 };
