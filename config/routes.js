@@ -115,7 +115,7 @@ module.exports.routes = {
     action: 'create'
   },
 
-  /** Login */
+  /** Login and Signup*/
   'get /login': {
     controller: 'AuthController',
     action: 'login'
@@ -127,5 +127,9 @@ module.exports.routes = {
   '/logout': {
     controller: 'AuthController',
     action: 'logout'
+  },
+  '/signup': {
+    controller: 'AuthController',
+    action: 'signup'
   }
 };

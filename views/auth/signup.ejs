@@ -1,0 +1,24 @@
+<!--  views/auth/signup.ejs -->
+
+<div class="header">
+  <h1 id="main-title" class="container"><%= __('Sign up for a Birds Account') %></h1>
+</div>
+<div class="container">
+  <% if (req.session.flash && req.session.flash.error) { %><%=req.flash('error')%><% } %>
+  <form action="/signup" method="post">
+    <div class="form-group">
+      <label for="inputName">Full Name</label>
+      <input type="text" name="name" id="inputName" class="form-control" placeHolder="Full Name">
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail">Email</label>
+      <input type="email" name="username" id="inputEmail" class="form-control" placeHolder="Email">
+    </div>
+    <div class="form-group">
+      <label for="inputPassword">Password</label>
+      <input type="password" name="password" id="inputPassword" class="form-control" placeHolder="Password">
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary">
+  </form>
+</div>

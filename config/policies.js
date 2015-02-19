@@ -56,7 +56,8 @@ module.exports.policies = {
     AuthController: {
       '*': 'isLoggedIn',
       login: 'isNotLoggedIn',
-      process: 'isNotLoggedIn'
+      process: 'isNotLoggedIn',
+      signup: 'isNotLoggedIn'
     },
     HomeController: {
       '*': 'isLoggedIn'

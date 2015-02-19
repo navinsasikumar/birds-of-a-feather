@@ -39,6 +39,9 @@ module.exports = {
     res.send('logout successful');
     req.session.returnTo = '/';
     res.redirect('/login');
+  },
+  signup: function (req, res) {
+    res.view();
   }
 };
 
