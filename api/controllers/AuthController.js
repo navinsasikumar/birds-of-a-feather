@@ -16,8 +16,9 @@ module.exports = {
         /*return res.send({
           message: 'login failed'
         });*/
-        console.log('Login failed')
+        console.log('Login failed');
         console.log(err);
+        req.flash('error', 'Your username or password is incorrect');
         return res.redirect('/login');
       }
       req.logIn(user, function(err) {
